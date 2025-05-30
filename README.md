@@ -1,10 +1,10 @@
 # Electric Vehicles Market Size Analysis
 
-This is a practice project.
-visualization will soon be done.
+This is a practice project.<br/>
+Visualisation will soon be done.
 
 ## setup
-### To run this first setup a virtual environment:
+### To run this, first set up a virtual environment:
 ```python
 python -m venv .venv
 ```
@@ -15,7 +15,7 @@ source .venv/bin/activate # for Linux
 ```
 ### For Windows
 ```python
-.venv/Scripts/activate
+.venv/Scripts/activate # For Windows
 ```
 
 ## Install necessary libraries:
