@@ -1,6 +1,6 @@
 # Electric Vehicles Market Size Analysis
 
-This is a practice project.
+This is a practice project.<br/>
 Visualisation will soon be done.
 
 ## setup
