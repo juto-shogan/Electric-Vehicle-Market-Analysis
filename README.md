@@ -1,7 +1,7 @@
 # Electric Vehicles Market Size Analysis
 
 This is a practice project.
-visualization will soon be done
+visualization will soon be done.
 
 ## setup
 ### To run this first setup a virtual environment:
