@@ -143,7 +143,7 @@ fig5 = px.bar(
         labels={'x': 'Electric Vehicle Type', 'y': 'Number of Vehicles'},
         title='Distribution of Electric Vehicle Types'
 )
-fig.update_layout(
+fig5.update_layout(
         xaxis_title='Electric Vehicle Type',
         yaxis_title='Number of Vehicles'
 )
@@ -168,3 +168,63 @@ st.write("""
 
 # plot 5
 st.subheader('Electric Range Analysis: Analyze the electric range of vehicles to see how EV technology is progressing.')
+
+# Group by Model Year and calculate average electric range and count of vehicles
+range_by_year = df.groupby('Model Year').agg(
+    avg_range=('Electric Range', 'mean'),
+    vehicle_count=('Electric Range', 'count')
+).reset_index()
+
+# Create a two-in-one plot: bar for vehicle count, line for average electric range
+fig7 = px.bar(
+    range_by_year,
+    x='Model Year',
+    y='vehicle_count',
+    labels={'vehicle_count': 'Number of Vehicles', 'Model Year': 'Model Year'},
+    title='EV Market Progression: Vehicle Count and Average Electric Range by Model Year'
+)
+
+fig7.add_scatter(
+    x=range_by_year['Model Year'],
+    y=range_by_year['avg_range'],
+    mode='lines+markers',
+    name='Average Electric Range',
+    yaxis='y2',
+    line=dict(color='red')
+)
+
+# Add secondary y-axis for average electric range
+fig7.update_layout(
+    yaxis=dict(title='Number of Vehicles'),
+    yaxis2=dict(
+        title='Average Electric Range (miles)',
+        overlaying='y',
+        side='right'
+    ),
+    legend=dict(x=0.01, y=0.99)
+)
+st.plotly_chart(fig7)
+st.write("""
+        - The analysis shows a steady increase in the average electric range of vehicles over the years, indicating advancements in battery technology. The number of vehicles registered also shows a positive trend, reflecting the growing adoption of electric vehicles in the market.
+                """)
+
+# Plot 6
+st.subheader('Estimated Growth in Market Size: Analyze and find the estimated growth in the market size of electric vehicles.') 
+
+ev_df = df[df['Electric Vehicle Type'].isin(['Battery Electric Vehicle (BEV)', 'Plug-in Hybrid Electric Vehicle (PHEV)'])]
+
+ev_growth = ev_df.groupby('Model Year').size().reset_index(name='Number of Electric Vehicles')
+
+# Sort by Model Year
+ev_growth = ev_growth.sort_values(by='Model Year')
+
+# Visualize the growth using Plotly
+fig8 = px.line(ev_growth, x='Model Year', y='Number of Electric Vehicles',
+              title='Estimated Growth of Electric Vehicle Market Size by Model Year',
+              labels={'Model Year': 'Model Year', 'Number of Electric Vehicles': 'Number of Electric Vehicles'},
+              markers=True)
+st.plotly_chart(fig8)
+st.write("""
+        - The estimated growth in the market size of electric vehicles, based on the data, shows a clear upward trend from 2012 to 2024. The number of electric vehicles has steadily increased over the years, with a notable acceleration in recent years. This indicates a significant expansion in the electric vehicle market
+        and suggests a growing acceptance and adoption of electric vehicles among consumers.
+                """)
