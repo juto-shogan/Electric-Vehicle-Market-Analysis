@@ -31,7 +31,7 @@ OR
 pip3 install -r requirements.txt
 ```
 
-### using app
+### Using app
 ```python
 streamlit run app.py
 ```
