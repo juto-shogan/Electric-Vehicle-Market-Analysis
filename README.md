@@ -31,5 +31,8 @@ OR
 pip3 install -r requirements.txt
 ```
 
-Data visualization will be done in streamlit and will be uploaded soon.
+### using app
+```python
+streamlit run app.py
+```
 
