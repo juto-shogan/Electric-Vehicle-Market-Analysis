@@ -104,5 +104,5 @@ This project provides a comprehensive analysis of the electric vehicle (EV) mark
 
 Somto Mbonu
 
-Data Analyst
+Data Analyst<br/>
 GitHub Profile: [juto-shogan](https://github.com/juto-shogan)
